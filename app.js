@@ -41,11 +41,9 @@ query.on("end", function(result) {
 });
 
 
-router.get('/getdata', (req, res, next) => {
-    res.send("Hello");
-});
-
-
+app.get('/getdata', function(req, res) {
+    res.send('hello');
+})
 
 //Connect to Express
 app.listen(PORT, function() {
