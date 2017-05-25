@@ -37,7 +37,7 @@ query.on("row", function(row, result) {
     result.addRow(row);
 });
 query.on("end", function(result) {
-    res.json(result);
+    res.send(JSON.stringify(result.rows, null, "    "));
     client.end();
 });
 })
