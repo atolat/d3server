@@ -32,6 +32,7 @@ router.get('/getdata', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Select Data
+    console.log('connected...');
     const query = client.query('SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION;');
     // Stream results back one row at a time
     query.on('row', (row) => {
