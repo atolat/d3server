@@ -36,7 +36,7 @@ router.get('/getdata', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Select Data
-    const query = client.query('SELECT * FROM public.LNA_ODS_CN_ACTION;');
+    const query = client.query('SELECT * FROM public.LNA_ODS_CN_ACTION LIMIT 10;');
     // Stream results back one row at a time
     query.on('row', (row) => {
       results.push(row);
