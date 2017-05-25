@@ -42,12 +42,7 @@ query.on("end", function(result) {
 
 
 router.get('/getdata', (req, res, next) => {
-    if (err) {
-        done();
-        console.log(err);
-        return res.status(500).json({ success: false, data: err });
-    }
-    res.send(JSON.stringify(result.rows, null, "    "));
+    res.send("Hello");
 });
 
 
