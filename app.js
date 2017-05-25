@@ -1,9 +1,9 @@
-//new server
-var express = require('express');
-var app = express();
-//var routes = require('./routes/server')(app);
 var PORT = process.env.PORT || 3000;
-//const express = require('express');
+const express = require('express');
+const router = express.Router();
+const pg = require('pg');
+const connectionString ='postgres://pdolcdhpesaiuw:a5c1df771d3b0b2b7554e4cf06621980cd0d1a647bd155fb6ae3848ce2856120@ec2-174-129-224-33.compute-1.amazonaws.com:5432/d6qes2ci89d25b';
+
 
 
 allowCrossDomain = function (req, res, next) {
@@ -20,10 +20,6 @@ allowCrossDomain = function (req, res, next) {
 app.use(allowCrossDomain);
 
 
-const router = express.Router();
-const pg = require('pg');
-const path = require('path');
-const connectionString ='postgres://pdolcdhpesaiuw:a5c1df771d3b0b2b7554e4cf06621980cd0d1a647bd155fb6ae3848ce2856120@ec2-174-129-224-33.compute-1.amazonaws.com:5432/d6qes2ci89d25b';
     
 router.get('/getdata', (req, res, next) => {
   const results = [];
