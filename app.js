@@ -41,6 +41,7 @@ app.get('/getdata', function(req, res) {
         res.send(JSON.stringify(result.rows, null, "    "));
         client.end();
     });
+    client.end();
 });
 
 //Connect to Express
