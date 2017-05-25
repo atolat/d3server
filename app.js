@@ -31,18 +31,15 @@ var client = new pg.Client({
 client.connect();
 
 
-var query = client.query("SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION");
+app.get('/getdata', function(req, res) {
+	var query = client.query("SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION");
 query.on("row", function(row, result) {
     result.addRow(row);
 });
 query.on("end", function(result) {
-    console.log(JSON.stringify(result.rows, null, "    "));
+    res.send(JSON.stringify(result.rows, null, "    "));
     client.end();
 });
-
-
-app.get('/getdata', function(req, res) {
-    res.send('hello');
 })
 
 //Connect to Express
