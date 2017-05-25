@@ -28,10 +28,11 @@ var client = new pg.Client({
     host: "ec2-174-129-224-33.compute-1.amazonaws.com",
     ssl: true
 });
-client.connect();
+
 
 
 app.get('/getdata', function(req, res) {
+	client.connect();
     var query = client.query("SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION;");
     query.on("row", function(row, result) {
         result.addRow(row);
@@ -40,7 +41,7 @@ app.get('/getdata', function(req, res) {
         res.send(JSON.stringify(result.rows, null, "    "));
         client.end();
     });
-})
+});
 
 //Connect to Express
 app.listen(PORT, function() {
