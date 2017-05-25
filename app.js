@@ -47,7 +47,7 @@ router.get('/getdata', (req, res, next) => {
         console.log(err);
         return res.status(500).json({ success: false, data: err });
     }
-    return JSON.stringify(result.rows, null, "    ");
+    res.send(JSON.stringify(result.rows, null, "    "));
 });
 
 
