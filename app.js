@@ -23,7 +23,7 @@ app.use(allowCrossDomain);
 const router = express.Router();
 const pg = require('pg');
 const path = require('path');
-const connectionString = process.env.DATABASE_URL || 'postgres://pdolcdhpesaiuw:a5c1df771d3b0b2b7554e4cf06621980cd0d1a647bd155fb6ae3848ce2856120@ec2-174-129-224-33.compute-1.amazonaws.com:5432/d6qes2ci89d25b';
+const connectionString ='postgres://pdolcdhpesaiuw:a5c1df771d3b0b2b7554e4cf06621980cd0d1a647bd155fb6ae3848ce2856120@ec2-174-129-224-33.compute-1.amazonaws.com:5432/d6qes2ci89d25b';
     
 router.get('/getdata', (req, res, next) => {
   const results = [];
