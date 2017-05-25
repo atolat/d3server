@@ -30,22 +30,24 @@ var client = new pg.Client({
 });
 client.connect();
 
-router.get('/', (req, res, next) => {
+
+var query = client.query("SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION");
+query.on("row", function(row, result) {
+    result.addRow(row);
+});
+query.on("end", function(result) {
+    console.log(JSON.stringify(result.rows, null, "    "));
+    client.end();
+});
+
+
+router.get('/getdata', (req, res, next) => {
     if (err) {
         done();
         console.log(err);
         return res.status(500).json({ success: false, data: err });
     }
-
-    var query = client.query("SELECT * FROM public.LNA_ODS_FEEDBACK_ACTION");
-    query.on("row", function(row, result) {
-        result.addRow(row);
-    });
-    query.on("end", function(result) {
-        console.log(JSON.stringify(result.rows, null, "    "));
-        return res.json(result);
-        client.end();
-    });
+    return JSON.stringify(result.rows, null, "    ");
 });
 
 
