@@ -1,3 +1,5 @@
+//Initial Configurations
+
 var PORT = process.env.PORT || 3000;
 const express = require('express');
 const router = express.Router();
@@ -30,6 +32,13 @@ var client = new pg.Client({
 });
 
 
+
+//Request Handler
+
+//API ROOT
+app.get('/', function(req, res) {
+    res.sendfile('./index.html');
+});
 
 app.get('/getdata', function(req, res) {
 	client.connect();
